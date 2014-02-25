@@ -14,6 +14,6 @@
     <gap:plugin name="org.apache.cordova.device" />
 
     <!-- This allows your app to load assets from all *.azurewebsites.net domains -->
-    <access origin="http://inflight.azurewebsites.net" subdomains="false" />
-    <access origin="https://inflight.azurewebsites.net" subdomains="false" />
+    <access origin="http://*.azurewebsites.net" subdomains="false" />
+    <access origin="https://*.azurewebsites.net" subdomains="false" />
 </widget>

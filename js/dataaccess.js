@@ -150,7 +150,7 @@
         try{
             // ToDo: Return all of the Pairing Details for a Single Pairing.
             var retVal = find(pairings(), "PairingID", pairingID);
-            return retVal.Items;
+            return retVal;
         }
         catch (err) {
             ex.log(err, this.Name + ".pairingDetails(pairingID:" + pairingID + ")");

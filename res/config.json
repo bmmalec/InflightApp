@@ -1,5 +1,0 @@
-﻿AppSettings = {
-    Version: "1.0.0.0 beta",
-    Company: "TPS Systems",
-    EndPoint: "http://localhost:54457/DataInterchange.asmx"
-}

@@ -1,7 +1,8 @@
 ﻿appSettings = {
     Version: "1.0.0.0 beta",
     Company: "TPS Systems",
-    EndPoint: "https://inflight.azurewebsites.net/DataInterchange.asmx"
+    //EndPoint: "http://inflightdev.devstuff.us/datainterchange.asmx"
+    EndPoint: "http://inflight.azurewebsites.net/DataInterchange.asmx"
     //EndPoint: "http://localhost:54527/DataInterchange.asmx"
 };
 
@@ -17,10 +18,11 @@ var bl = (function () {
         try{
             var endPoint = appSettings.EndPoint;
             $.ajax({
+                crossDomain: true,
                 type: 'POST',
                 url: appSettings.EndPoint + '/Authenticate',
                 contentType: 'application/json; charset=utf-8',
-                data: '{AirlineCode:"' + airlineCode + '",EmployeeID:' + employeeID + '}',
+                data: '{"AirlineCode":"' + airlineCode + '","EmployeeID":' + employeeID + '}',
                 dataType: 'json',
                 success: function (results) {
                     console.log("Authentication Successful.");
