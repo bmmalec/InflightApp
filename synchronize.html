@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>TPS Systems - In-Flight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/jquery/jquery.mobile-1.4.1.min.css">
+    <link rel="stylesheet" href="./css/master.min.css">
+    <link rel="stylesheet" href="./css/synchronize.min.css">
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/jquery/jquery.mobile-1.4.1.min.js"></script>
+    <script src="./js/date.format.min.js"></script>
+    <script src="./js/exception.js"></script>
+    <script src="./js/localstoragedb.min.js"></script>
+    <script src="./js/dataaccess.js"></script>
+    <script src="./js/businesslayer.js"></script>
+    <script src="./js/synchronize.js"></script>
+</head>
+<body>
+    <div data-role="page" id="Page">
+        <!-- Header -->
+        <div data-role="header">
+            <a href="#pnlSiteMenu" data-role="button" data-icon="bars" data-iconpos="notext"></a>
+            <h1>In-Flight<span></span></h1>
+            <a href="signout.html" data-role="button" data-icon="lock" data-ajax="false">Sign Out</a>
+        </div>
+
+        <!-- Content/Body -->
+        <div data-role="content">
+            <div class="PageTitle"><img src="./imgs/48x48/refresh.png" width="48" height="48" alt="" /> <span>Synchronize</span></div>            
+
+            <section id="Section1">
+                <div data-role="fieldcontain">
+                    <label for="FlightSchedules">Flight&nbsp;Schedules:</label>
+                    <select name="FlightSchedules" id="FlightSchedules" data-role="slider">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="Pairings">Pairings:</label>
+                    <select name="Pairings" id="Pairings" data-role="slider">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="Expenses">Expenses:</label>
+                    <select name="Expenses" id="Expenses" data-role="slider" disabled="disabled">
+                        <option value="true">Yes</option>
+                        <option value="false" selected="selected">No</option>
+                    </select>
+                </div>
+            </section>
+
+            <section id="Section2">
+                <div class="ui-bar-a">Previous Sync:</div>
+                <div class="ui-body-a">
+                    <strong>Last Sync Date:</strong> <small id="LastSyncDate">--</small><br />
+                    <strong>Sync Status:</strong> <span id="LastSyncStatus">--</span><br />
+                    <strong>Data Included:</strong> <span id="LastSyncIncluded">--</span><br />
+                    <strong>Flight Schedules:</strong> <span id="LastSyncFlightScheduleCount">--</span><br />
+                    <strong>Pairings:</strong> <span id="LastSyncPairingCount">--</span><br />
+                </div>
+            </section>
+            <br /><hr />
+            <div id="ButtonContainer">
+                <a href="#" id="btnSync" data-role="button" data-icon="check" data-inline="true" data-theme="b">Start Sync</a>
+                <div id="SyncMessage"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div data-role="footer" data-position="fixed">
+            <span>TPS Systems <small>©</small>Copyright 2014</span>
+        </div>
+
+        <!-- Site Menu -->
+        <div id="pnlSiteMenu" data-role="panel" data-display="overlay" data-theme="b">
+            <ul data-role="listview">
+                <li><a href="index.html" data-ajax="false">Dashboard</a></li>
+                <li><a href="crewschedule.html" data-ajax="false">Crew Schedule</a></li>
+                <li><a href="crewpairing.html" data-ajax="false">Crew Pairings</a></li>
+                <li><a href="flightschedule.html" data-ajax="false">Flight Schedule</a></li>
+                <li><a href="#">Synchronize</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

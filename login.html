@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>TPS Systems - In-Flight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/jquery/jquery.mobile-1.4.1.min.css">
+    <link rel="stylesheet" href="./css/master.min.css">
+    <link rel="stylesheet" href="./css/login.min.css">
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/jquery/jquery.mobile-1.4.1.min.js"></script>
+    <script src="./js/jquery/jquery.alphanumeric.min.js"></script>
+    <script src="./js/exception.js"></script>
+    <script src="./js/dataaccess.js"></script>
+    <script src="./js/businesslayer.js"></script>
+    <script src="./js/login.js"></script>
+</head>
+<body>
+    <div data-role="page" id="Page">
+        <!-- Content/Body -->
+        <form data-role="content" id="frmLogin">
+            <div id="AppTitle">In-Flight</div>
+            <div id="Version">Version 1.0.0.0</div>
+            <input type="text" id="AirlineCode" placeholder="Airline Code" required="required" maxlength="3" autofocus="autofocus" />
+            <input type="number" id="EmployeeID" placeholder="Employee ID" required="required" maxlength="6" />
+            <button id="btnLogin" type="submit">Login</button>
+            <div id="Message" class="ErrorMessage"></div>
+        </form>
+
+        <!-- Footer -->
+        <div data-role="footer" data-position="fixed">
+            <span>TPS Systems <small>©</small>Copyright 2014</span>
+        </div>
+
+        <!-- Site Menu -->
+        <div id="pnlSiteMenu" data-role="panel" data-display="overlay" data-theme="b">
+            <ul data-role="listview"></ul>
+        </div>
+    </div>
+</body>
+</html>

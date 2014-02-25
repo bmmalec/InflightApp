@@ -1,0 +1,23 @@
+﻿h1 img { vertical-align: middle; }
+img { vertical-align: middle; }
+br { clear: both; }
+a { text-decoration: none; }
+strong { color: #0088bb; }
+
+div.ui-header[data-role=header] h1 {color:gray;}
+div.ui-header[data-role=header] h1 span{color:black;}
+div.ui-footer[data-role=footer] { text-align: center; }
+div.ui-footer[data-role=footer] span { font-weight: normal; }
+
+.ErrorMessage { color: red; }
+
+.ui-content { padding-top: 0; }
+.PageTitle { padding-bottom: 3px; }
+.PageTitle img { padding-right: 7px; }
+.PageTitle span { font-weight: bold; text-shadow: 5px 5px 5px #888888; font-size: 30px; }
+.PageTitle span span { color:navy; }
+
+#tblPairings th { text-align:center; border-left:1px solid;}
+#tblPairings tr.th-groups th { border-bottom:1px solid;}
+#tblPairings tbody td { text-align:center; font-size:small; }
+#tblPairings tbody td:last-child { text-align:left; padding-left:10px; }

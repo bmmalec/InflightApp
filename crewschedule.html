@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>TPS Systems - In-Flight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/jquery/jquery.mobile-1.4.1.min.css">
+    <link rel="stylesheet" href="./css/master.min.css">
+    <link rel="stylesheet" href="./css/daypilot/month_traditional.min.css">
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/jquery/jquery.mobile-1.4.1.min.js"></script>
+    <script src="./js/daypilot/daypilot-all.min.js"></script>
+    <script src="./js/exception.js"></script>
+    <script src="./js/localstoragedb.min.js"></script>
+    <script src="./js/dataaccess.js"></script>
+    <script src="./js/businesslayer.js"></script>
+    <script src="./js/crewschedule.js"></script>
+</head>
+<body>
+    <div data-role="page" id="Page">
+        <!-- Header -->
+        <div data-role="header" data-position="fixed">
+            <a href="#pnlSiteMenu" data-role="button" data-icon="bars" data-iconpos="notext"></a>
+            <h1>In-Flight<span></span></h1>
+            <a href="signout.html" data-role="button" data-icon="lock" data-ajax="false">Sign Out</a>
+        </div>
+
+        <!-- Content/Body -->
+        <div data-role="content">
+            <div class="PageTitle"><img src="./imgs/48x48/calendar.png" width="48" height="48" alt="" /> <span>Crew Flight Schedule</span></div>
+            <div style="float: left; width: 150px;">
+                <div id="nav"></div>
+            </div>
+            <div style="margin-left: 150px;">
+                <div id="dp"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div data-role="footer" data-position="fixed">
+            <span>TPS Systems <small>©</small>Copyright 2014</span>
+        </div>
+
+        <!-- Site Menu -->
+        <div id="pnlSiteMenu" data-role="panel" data-display="overlay" data-theme="b">
+            <ul data-role="listview">
+                <li><a href="index.html" data-ajax="false">Dashboard</a></li>
+                <li><a href="#">Crew Schedule</a></li>
+                <li><a href="crewpairing.html" data-ajax="false">Crew Pairings</a></li>
+                <li><a href="flightschedule.html" data-ajax="false">Flight Schedule</a></li>
+                <li><a href="synchronize.html" data-ajax="false">Synchronize</a></li>
+            </ul>
+        </div>
+    </div>    
+</body>
+</html>

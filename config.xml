@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="net.tpssystems.inflight" versionCode="1" version="0.0.1" >
+    <name>In-Flight</name>
+    <description>Flight Attending Companion and Onboard Point of Sales</description>
+    <author href="https://TPSSystems.net" email="Support@TPSSystems.net">TPS Development Team</author>
+
+    <preference name="phonegap-version" value="3.1.0" />
+    <preference name="target-device" value="tablet" /> <!-- iOS Only -->
+    <preference name="deployment-target" value="7.0" /> <!-- iOS Only -->
+    
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+
+    <gap:plugin name="org.apache.cordova.device" />
+
+    <!-- This allows your app to load assets from all *.azurewebsites.net domains -->
+    <access origin="http://inflight.azurewebsites.net" subdomains="false" />
+    <access origin="https://inflight.azurewebsites.net" subdomains="false" />
+</widget>

@@ -1,0 +1,18 @@
+﻿@media only screen and (orientation:portrait) {
+    /* For portrait layouts only */
+    body { background: url(../imgs/43989976-portrait.png) !important; background-repeat: no-repeat !important; background-position: center center; background-attachment: scroll; -moz-background-size: 100% 100%; -o-background-size: 100% 100%; background-size: 100% 100%; }
+    .ui-page, .ui-content { background: transparent; }
+    #frmLogin { width: 275px; margin-left: auto; margin-right: auto; padding-top: 50px; }
+    #Version { text-align: center; font-weight: bold; padding-bottom: 300px; }
+}
+
+@media only screen and (orientation:landscape) {
+    /* For landscape layouts only */
+    body { background: url(../imgs/43989976-landscape.png) !important; background-repeat: no-repeat !important; background-position: center center; background-attachment: scroll; -moz-background-size: 100% 100%; -o-background-size: 100% 100%; background-size: 100% 100%; }
+    .ui-page, .ui-content { background: transparent; }
+    #frmLogin { width: 275px; margin-left: auto; margin-right: auto; }
+    #Version { text-align: center; font-weight: bold; padding-bottom: 250px; }
+}
+
+#AppTitle { text-align: center; font-weight: bold; text-shadow: 5px 5px 5px #888888; font-size: 65px; }
+#ErrorMessage { text-align: center; }
