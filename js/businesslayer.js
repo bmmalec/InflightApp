@@ -1,8 +1,8 @@
 ﻿appSettings = {
     Version: "1.0.0.0 beta",
     Company: "TPS Systems",
-    //EndPoint: "http://inflightdev.devstuff.us/datainterchange.asmx"
-    EndPoint: "http://inflight.azurewebsites.net/DataInterchange.asmx"
+    EndPoint: "http://inflightdev.devstuff.us/datainterchange.asmx/Authenticate"
+    //EndPoint: "http://inflight.azurewebsites.net/DataInterchange.asmx"
     //EndPoint: "http://localhost:54527/DataInterchange.asmx"
 };
 
@@ -15,24 +15,27 @@ var bl = (function () {
     // DEFINE:  Returns the Date the device as last synched to the back office.
     //////////////////////////////////////////////////////////////////////////////////////////////////
     function authenticate (airlineCode, employeeID) {
-        try{
-            var endPoint = appSettings.EndPoint;
+        try {
+            var rec = { "AirlineCode": "000", "employeeID": "12345" };
+
+            var endPoint = "http://inflightdev.devstuff.us/datainterchange.asmx/Authenticate";
             $.ajax({
                 crossDomain: true,
                 type: 'POST',
-                url: appSettings.EndPoint + '/Authenticate',
-                contentType: 'application/json; charset=utf-8',
-                data: '{"AirlineCode":"' + airlineCode + '","EmployeeID":' + employeeID + '}',
-                dataType: 'json',
+                url: 'http://mobiledevws.devstuff.us/DeviceSync.asmx/Authenticate',
+                // url: 'http://localhost:60919/DeviceSync.asmx/Authenticate',
+                //contentType: 'text', 
+                data: 'AirlineCode=' + airlineCode + '&employeeID=' + employeeID,
+                dataType: 'xml',
                 success: function (results) {
-                    console.log("Authentication Successful.");
-                    var nData = jQuery.parseJSON(results.d);
+                    // alert("Authentication Successful.");
+                    var nData = jQuery.parseJSON(results.documentElement.innerHTML);
                     onAuthenticated(nData);
                 },
                 error: function (results) {
                     console.log("Authentication Failed.");
                     ex.log(new Error(results.responseText), this.Name + ".authenticate()");
-                    onAuthenticated({ Authenticated: false, Message: "Error: Communication Error." });
+                    //onAuthenticated({ Authenticated: false, Message: "Error: Communication Error." });
                 }
             });
         }

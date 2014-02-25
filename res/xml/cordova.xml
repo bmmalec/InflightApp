@@ -1,0 +1,3 @@
+﻿<access origin=""*" />
+<access origin="http://localhost:60919/" />
+<access origin="http://mobiledevws.devstuff.us" />  
