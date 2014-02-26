@@ -1,16 +1,16 @@
 ﻿/*
-* Date Format 1.2.3
-* (c) 2007-2009 Steven Levithan <stevenlevithan.com>
-* MIT license
-*
-* Includes enhancements by Scott Trenda <scott.trenda.net>
-* and Kris Kowal <cixar.com/~kris.kowal/>
-*
-* Accepts a date, a mask, or a date and a mask.
-* Returns a formatted version of the given date.
-* The date defaults to the current date/time.
-* The mask defaults to dateFormat.masks.default.
-*/
+ * Date Format 1.2.3
+ * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
+ * MIT license
+ *
+ * Includes enhancements by Scott Trenda <scott.trenda.net>
+ * and Kris Kowal <cixar.com/~kris.kowal/>
+ *
+ * Accepts a date, a mask, or a date and a mask.
+ * Returns a formatted version of the given date.
+ * The date defaults to the current date/time.
+ * The mask defaults to dateFormat.masks.default.
+ */
 
 var dateFormat = function () {
     var token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
@@ -89,7 +89,7 @@ var dateFormat = function () {
             return $0 in flags ? flags[$0] : $0.slice(1, $0.length - 1);
         });
     };
-} ();
+}();
 
 // Some common format strings
 dateFormat.masks = {
@@ -112,11 +112,11 @@ dateFormat.i18n = {
     dayNames: [
 		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
 		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-	],
+    ],
     monthNames: [
 		"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 		"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-	]
+    ]
 };
 
 // For convenience...
@@ -124,45 +124,14 @@ Date.prototype.format = function (mask, utc) {
     return dateFormat(this, mask, utc);
 };
 
-// Returns Today's Date.
-function Today () {
-    var Now = new Date();
-    return new Date(Now.format("m/d/yyyy"));
-} 
-
-function Yesterday () {
-    var nDate = Today();
-    return nDate.add("d", 1);
-} 
-
-// Minics the DateAdd() function found in most languages.
-Date.prototype.add = function (sInterval, iNum) {
-    var dTemp = this;
-    if (!sInterval || iNum == 0) return dTemp;
-    switch (sInterval.toLowerCase()) {
-        case "ms":
-            dTemp.setMilliseconds(dTemp.getMilliseconds() + iNum);
-            break;
-        case "s":
-            dTemp.setSeconds(dTemp.getSeconds() + iNum);
-            break;
-        case "mi":
-            dTemp.setMinutes(dTemp.getMinutes() + iNum);
-            break;
-        case "h":
-            dTemp.setHours(dTemp.getHours() + iNum);
-            break;
-        case "d":
-            dTemp.setDate(dTemp.getDate() + iNum);
-            break;
-        case "mo":
-            dTemp.setMonth(dTemp.getMonth() + iNum);
-            break;
-        case "y":
-            dTemp.setFullYear(dTemp.getFullYear() + iNum);
-            break;
-    }
-    return dTemp;
+// ===================================================================================================
+//  NAME:   formatJSONDate()
+//  DEFINE: Converts JSON Date into a Javascript Date Object.
+// ===================================================================================================
+function formatJSONDate(jsonDate) {
+    //var date = eval(jsonDate.replace(/\/Date\((\d+)\)\//gi, "new Date($1)"));
+    var date = new Date(parseInt(jsonDate.substr(6)));
+    return date;
 }
 
 // ===================================================================================================

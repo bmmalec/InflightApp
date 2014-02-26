@@ -8,7 +8,7 @@
     <script src="./js/jquery/jquery.min.js"></script>
     <script src="./js/jquery/jquery.mobile-1.4.1.min.js"></script>
     <script src="../js/jquery/jquery.tmpl.min.js"></script>
-    <script src="./js/date.format.min.js"></script>
+    <script src="./js/date.format.js"></script>
     <script src="./js/exception.js"></script>
     <script src="./js/localstoragedb.min.js"></script>
     <script src="./js/dataaccess.js"></script>
@@ -71,11 +71,11 @@
                 <tbody>
                 {{each Items}}
                     <tr>
-                        <td>${dateFormat(DepartureTime,"dd ddd")}</td>
+                        <td>${formatJSONDate(DepartureTime).format("mmm mm")}</td>
                         <td>${DepartureAirport}</td>
-                        <td>${dateFormat(DepartureTime,"HH:mm")}</td>
+                        <td>${formatJSONDate(DepartureTime).format("HH:MM")}</td>
                         <td>${ArrivalAirport}</td>
-                        <td>${dateFormat(ArrivalTime,"HH:mm")}</td>
+                        <td>${formatJSONDate(ArrivalTime).format("HH:MM")}</td>
                         <td>${TailNumber}</td>
                         <td>${FlightNumber}</td>
                         <td>${Layover}</td>

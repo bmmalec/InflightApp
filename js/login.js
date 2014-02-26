@@ -1,13 +1,9 @@
 ﻿$(function () {
-    document.addEventListener("deviceready", Page.onDeviceReady(), false);
+    document.addEventListener("deviceready", Page.initialize(), false);
 });
 
 var Page = (function () {
     var IsSynced = false;
-
-    function onDeviceReady() {
-        initialize();
-    }
 
     function initialize() {
         try {
@@ -59,5 +55,5 @@ var Page = (function () {
         }
     }
 
-    return { onDeviceReady: onDeviceReady };
+    return { initialize: initialize };
 }());

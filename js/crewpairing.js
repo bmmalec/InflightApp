@@ -1,12 +1,8 @@
 ﻿$(function () {
-    document.addEventListener("deviceready", Page.onDeviceReady(), false);
+    document.addEventListener("deviceready", Page.initialize(), false);
 });
 
 var Page = (function () {
-
-    function onDeviceReady() {
-        initialize();
-    }
 
     function initialize() {
         // Show Airline Name
@@ -33,5 +29,5 @@ var Page = (function () {
         }
     }
 
-    return { onDeviceReady: onDeviceReady };
+    return { initialize: initialize };
 }());

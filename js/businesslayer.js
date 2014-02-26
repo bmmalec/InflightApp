@@ -1,8 +1,8 @@
 ﻿appSettings = {
     Version: "1.0.0.0 beta",
     Company: "TPS Systems",
-    EndPoint: "http://inflightdev.devstuff.us/datainterchange.asmx/Authenticate"
-    //EndPoint: "http://inflight.azurewebsites.net/DataInterchange.asmx"
+    //EndPoint: "http://inflightdev.devstuff.us/datainterchange.asmx"
+    EndPoint: "http://inflight.azurewebsites.net/DataInterchange.asmx"
     //EndPoint: "http://localhost:54527/DataInterchange.asmx"
 };
 
@@ -15,27 +15,24 @@ var bl = (function () {
     // DEFINE:  Returns the Date the device as last synched to the back office.
     //////////////////////////////////////////////////////////////////////////////////////////////////
     function authenticate (airlineCode, employeeID) {
-        try {
-            var rec = { "AirlineCode": "000", "employeeID": "12345" };
-
-            var endPoint = "http://inflightdev.devstuff.us/datainterchange.asmx/Authenticate";
+        try{
+            var endPoint = appSettings.EndPoint + '/Authenticate';
             $.ajax({
                 crossDomain: true,
                 type: 'POST',
-                url: 'http://mobiledevws.devstuff.us/DeviceSync.asmx/Authenticate',
-                // url: 'http://localhost:60919/DeviceSync.asmx/Authenticate',
-                //contentType: 'text', 
-                data: 'AirlineCode=' + airlineCode + '&employeeID=' + employeeID,
-                dataType: 'xml',
+                url: endPoint,
+                contentType: 'application/json; charset=utf-8',
+                data: '{"AirlineCode":"' + airlineCode + '","EmployeeID":"' + employeeID + '"}',
+                dataType: 'json',
                 success: function (results) {
-                    // alert("Authentication Successful.");
-                    var nData = jQuery.parseJSON(results.documentElement.innerHTML);
+                    console.log("Authentication Successful.");
+                    var nData = jQuery.parseJSON(results.d);
                     onAuthenticated(nData);
                 },
                 error: function (results) {
                     console.log("Authentication Failed.");
                     ex.log(new Error(results.responseText), this.Name + ".authenticate()");
-                    //onAuthenticated({ Authenticated: false, Message: "Error: Communication Error." });
+                    onAuthenticated({ Authenticated: false, Message: "Error: Communication Error." });
                 }
             });
         }
@@ -85,7 +82,7 @@ var bl = (function () {
     //////////////////////////////////////////////////////////////////////////////////////////////////
     function onSynchronized(results) {
         try {
-            localStorage.LastSyncDate = results.SyncDate;
+            localStorage.LastSyncDate = formatJSONDate(results.SyncDate);
             localStorage.LastSyncStatus = results.Successful;
             localStorage.LastSyncMessage = results.Message;
 
@@ -202,16 +199,11 @@ var bl = (function () {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
     // NAME: signOut()
-    // DEFINE:  Sets the (localStorage.IsAuthenticated = false) & clears out the User's info.
+    // DEFINE:  Clears HTML localStorage.
     //////////////////////////////////////////////////////////////////////////////////////////////////
-     function signOut () {
-        try {
-            localStorage.IsAuthenticated = false;
-            localStorage.AirlineID = null;
-            localStorage.UID = null;
-            localStorage.FirstName = null;
-            localStorage.LastName = null;
-            localStorage.AuthenticationMessage = false;
+     function signOut() {
+         try {
+             localStorage.clear();
         }
         catch (err) {
             ex.log(err, this.Name + ".signOut()");
@@ -227,6 +219,7 @@ var bl = (function () {
             var endPoint = appSettings.EndPoint;
             $.ajax({
                 type: 'POST',
+                crossDomain: true,
                 url: appSettings.EndPoint + '/Synchronize',
                 contentType: 'application/json; charset=utf-8',
                 data: '{UID:' + localStorage.UID + '}',

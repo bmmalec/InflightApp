@@ -1,14 +1,10 @@
 ﻿$(function () {
-    document.addEventListener("deviceready", Page.onDeviceReady(), false);
+    document.addEventListener("deviceready", Page.initialize(), false);
 });
 
 var Page = (function () {
     var dp;
     var months = [];
-
-    function onDeviceReady() {
-        initialize();
-    }
 
     function initialize() {
         // Show Airline Name
@@ -32,8 +28,8 @@ var Page = (function () {
                 // ToDo: Only return [pairingDetail] records so this check won't be necessary.
                 if (pairingDetails[i].RowID != undefined) {
                     var pairingDetail = pairingDetails[i];
-                    var startDate = dateFormat(pairingDetail.DepartureTime, "yyyy-mm-dd") + "T" + dateFormat(pairingDetail.DepartureTime, "HH:MM:ss");
-                    var endDate = dateFormat(pairingDetail.ArrivalTime, "yyyy-mm-dd") + "T" + dateFormat(pairingDetail.ArrivalTime, "HH:MM:ss");
+                    var startDate = formatJSONDate(pairingDetail.DepartureTime).format("yyyy-mm-dd") + "T" + formatJSONDate(pairingDetail.DepartureTime).format("HH:MM:ss");
+                    var endDate = formatJSONDate(pairingDetail.ArrivalTime).format("yyyy-mm-dd") + "T" + formatJSONDate(pairingDetail.ArrivalTime).format("HH:MM:ss");
 
                     // STEP 3b: Add each [pairingDetail] to the DayPilot calendar.
                     var e = new DayPilot.Event({
@@ -76,6 +72,6 @@ var Page = (function () {
         }
     }
 
-    return { onDeviceReady: onDeviceReady };
+    return { initialize: initialize };
 }());
 
