@@ -50,22 +50,22 @@
         <script id="PairingsTemplate" type="text/x-jquery-tmpl">
             <table id="tblPairings" data-role="table" data-mode="columntoggle" class="ui-responsive table-stripe">
                 <thead>
-                    <tr class="ui-bar-b th-groups">
+<!--                    <tr class="ui-bar-b th-groups">
                         <th colspan="3" data-priority="1">Departure</th>
                         <th colspan="2" data-priority="1">Arrival</th>
                         <th colspan="2" data-priority="2">Flight</th>
                         <th data-priority="5">Layover
                         </th>
-                    </tr>
+                    </tr>-->
                     <tr class="ui-bar-b">
                         <th>Date</th>
                         <th>City</th>
                         <th>Time</th>
                         <th>City</th>
                         <th>Time</th>
-                        <th data-priority="2">Tail</th>
+<!--                        <th data-priority="2">Tail</th>
                         <th data-priority="1">Flight</th>
-                        <th data-priority="5">Layover</th>
+                        <th data-priority="5">Layover</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -76,9 +76,9 @@
                         <td>${formatJSONDate(DepartureTime).format("HH:MM")}</td>
                         <td>${ArrivalAirport}</td>
                         <td>${formatJSONDate(ArrivalTime).format("HH:MM")}</td>
-                        <td>${TailNumber}</td>
+<!--                        <td>${TailNumber}</td>
                         <td>${FlightNumber}</td>
-                        <td>${Layover}</td>
+                        <td>${Layover}</td>-->
                     </tr>
                 {{/each}}
                 </tbody>
