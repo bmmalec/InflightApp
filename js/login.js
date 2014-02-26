@@ -21,7 +21,7 @@ var Page = (function () {
                     $("#Message").html("Downloading...");
 
                     if (IsSynced) {
-                        window.location = "index.html";
+                        window.location = "dashboard.html";
                     }
                     else {
                         IsSynced = true;

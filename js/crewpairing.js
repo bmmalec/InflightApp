@@ -19,7 +19,7 @@ var Page = (function () {
             pairings = da.pairings();
 
             // STEP 2: Create a HTML table of all of the Pairings
-            $("#PairingsTemplate").tmpl(pairings[0]).appendTo("#PairingsContainer");
+            $("#PairingsTemplate").tmpl(pairings[1]).appendTo("#PairingsContainer");
 
             // STEP 3: Apply JQM styling to the HTML <table>.
             $("#tblPairings").table();
