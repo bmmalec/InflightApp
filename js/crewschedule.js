@@ -35,7 +35,7 @@ var Page = (function () {
                     var e = new DayPilot.Event({
                         start: new DayPilot.Date(startDate),
                         end: new DayPilot.Date(endDate),
-                        id: DayPilot.guid(),
+                        id: pairingDetail.RowID,
                         text: "<strong>" + pairingDetail.FlightNumber + "</strong> " + pairingDetail.DepartureAirport + "-" + pairingDetail.ArrivalAirport
                     });
                     dp.events.add(e);
@@ -44,7 +44,9 @@ var Page = (function () {
 
             // Events
             dp.onEventClicked = function (args) {
-                alert("clicked: " + args.e.id());
+                var pairingDetail = da.find(pairingDetails, "RowID", args.e.data.id)[0];
+                $("#popup").html($("#popupTemplate").tmpl(pairingDetail));
+                $("#popup").popup("open");
             };
 
             // NOTE: Initialization must be the last Step.

@@ -136,6 +136,14 @@
      function pairingDetail (rowID) {
         try {
             // ToDo: Return all of the Pairing Details for a Single Pairing.
+            var retVal = find(pairings(), "RowID", rowID); // HACK: This is for demo purposes only. 
+            if (retVal.length = 0) {
+                return null;
+            }
+            else {
+                var pd = retVal[0];
+                return pd;
+            }
         }
         catch (err) {
             ex.log(err, this.Name + ".PairingDetail(RowID:" + rowID + ")");
@@ -149,7 +157,7 @@
     function pairingDetails(pairingID) {
         try{
             // ToDo: Return all of the Pairing Details for a Single Pairing.
-            var retVal = find(pairings(), "PairingID", pairingID);
+            var retVal = find(pairings(), "PairingID", pairingID); // HACK: This is for demo purposes only.
             return retVal;
         }
         catch (err) {
